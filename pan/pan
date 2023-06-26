@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# 引数なし
+if [ ! -n "${1}" ]; then
+    echo "please select file"
+    exit 1
+fi
+target_file="${1}"
+# 該当ファイルなし
+if [ ! -f "${target_file}" ]; then
+    echo "file \"${target_file}\" is missing"
+    exit 1
+fi
+
+# アウトプット名指定なし
+if [ ! -n "${2}" ]; then
+    echo "please give output file name"
+    exit 1
+fi
+output_file="${2}"
+
+pandoc ${target_file} -o ${output_file} --pdf-engine=lualatex -V documentclass=bxjsarticle -V classoption=pandoc

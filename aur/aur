@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+current_dir="$(pwd)"
+aur_dirs=$(find "${HOME}/aur/." -maxdepth 1 -type d)
+
+show_list() {
+    for aur_dir in ${aur_dirs}; do
+        name=$(basename ${aur_dir})
+        if [ "${name}" = "." ]; then
+            continue
+        fi
+        echo ${name}
+    done
+}
+
+pull_from_repo() {
+    for aur_dir in ${aur_dirs}; do
+        if [ "$(basename ${aur_dir})" = "." ]; then
+            continue
+        fi
+        cd ${aur_dir}
+        echo "$(basename ${aur_dir}):"
+        git pull
+        echo ""
+        echo ""
+    done
+    cd ${current_dir}
+}
+
+usage() {
+    echo "USAGE:"
+    echo "$ aur <COMMAND | OPTION>"
+    echo ""
+    echo "COMMAND:"
+    echo "list:"
+    echo "  show aur list"
+    echo "pull:"
+    echo "  pull from repositories"
+    echo ""
+    echo "OPTION:"
+    echo "  -h, --help: show help"
+}
+
+case "$1" in
+    "list" )
+        show_list
+        ;;
+    "pull" )
+        pull_from_repo
+        ;;
+    "--help" | "-h" | * )
+        usage
+        ;;
+
+esac
