@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+to=$1
+
+# ip:portのようになっているかを判定
+if [[ "${to}" =~ [1-9][1-9]?[1-9]?\.[1-9][1-9]?[1-9]?\.[1-9][1-9]?[1-9]?\.[1-9][1-9]?[1-9]?:[1-9]+ ]]; then
+    # okならffmpeg実行
+    ffmpeg -i http://${to}/video -vf format=yuv420p -f v4l2 /dev/video0
+else
+    echo "need arg <ip addr>:<port>"
+fi
+
