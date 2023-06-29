@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
+# vcコマンド
+# neovimのconfigディレクトリをカレントディレクトリにしてnvimを起動する
+
 cd "${HOME}/.config/nvim"
 nvim

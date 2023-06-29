@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+
+# vfコマンド
+# カレントディレクトリ下のファイルをfzfで絞り込んでnvimで開く
+
 target_file=$(find . -name "*" -type f 2>/dev/null | grep -v "\.git" | fzf)
 if [ -n "${target_file}" ]; then
     nvim ${target_file}
 fi
+
+# :todo: 引数でディレクトリを指定できるようにする

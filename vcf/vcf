@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# vcfコマンド
+# Neovimのコンフィグファイルをfzfで選択して開く
+
 cd ${HOME}/.config/nvim
 target_file=$(find . -name "*" -type f 2>/dev/null | grep -v "\.git" | fzf)
 if [ -n "${target_file}" ]; then

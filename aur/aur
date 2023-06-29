@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# aurコマンド
+# aurのディレクトリ下のgit操作
+
 current_dir="$(pwd)"
 aur_dirs=$(find "${HOME}/aur/." -maxdepth 1 -type d)
 

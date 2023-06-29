@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# panコマンド
+# pandocの引数省略
+
 # 引数なし
 if [ ! -n "${1}" ]; then
     echo "please select file"

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# tefコマンド
+# latexのコンパイルとpdf化、不要なファイルの削除を行う
+
 target_file=$1
 
 if [ ! -e "${target_file}" ]; then
