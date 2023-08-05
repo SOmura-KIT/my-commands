@@ -16,11 +16,8 @@ cdf() {
         return 1
     fi
 
-    # カレントディレクトリを移動
-    cd ${current_dir}
-
     # カレントディレクトリ以下のディレクトリをfzfで選択
-    target_dir=$(find . -name "*" -type d 2>/dev/null | grep -v "\.git" | fzf)
+    target_dir=$(find "${current_dir}" -name "*" -type d 2>/dev/null | grep -v "\.git" | fzf)
     if [ -n "${target_dir}" ]; then
         cd ${target_dir}
     fi
